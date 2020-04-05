@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @query.title %>
+</p>
+
+<p>
+  <strong>Request:</strong>
+  <%= @query.request %>
+</p>
+
+<p>
+  <strong>Response:</strong>
+  <%= @query.response %>
+</p>
+
+<%= link_to 'Edit', edit_query_path(@query) %> |
+<%= link_to 'Back', queries_path %>
