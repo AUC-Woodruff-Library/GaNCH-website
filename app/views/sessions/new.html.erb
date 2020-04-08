@@ -1,0 +1,7 @@
+<% title 'Login' %>
+
+<%= bootstrap_form_with(url: sessions_path, method: :post, local: true) do |f| %>
+  <%= f.email_field :email %>
+  <%= f.password_field :password %>
+  <%= f.primary "Login" %>
+<% end %>
