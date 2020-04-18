@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Ganch</title>
+    <title>GaNCH<%= " | "+yield(:title) unless yield(:title).blank? %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,7 +11,7 @@
 
   <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <%= link_to "GaNCH", root_path, class: "navbar-brand" %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbardExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -19,15 +19,39 @@
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <%= nav_link "Home", root_path %>
-          <%= nav_link "About", "/about" %>
+          <%= nav_link "About", about_path %>
         </ul>
         <ul class="navbar-nav pull-right mr-auto">
-          <%= nav_link "Sign Up", signup_path %>
-          <%= nav_link "Login", login_path %>
+          <% if session[:user_id] != nil %>
+            <%= nav_link "Logout", "/logout" %>
+          <% else %>
+            <%= nav_link "Sign Up", signup_path %>
+            <%= nav_link "Login", login_path %>
+          <% end %>
         </ul>
       </div>
     </nav>
     <main role="main" class="container">
+      <!-- Begin Flash messages -->
+      <div id="flash-messages" class="row">
+        <% flash.each do |name, msg| %>
+          <div class="alert alert-<%= name == 'notice' ? 'primary' : 'danger'%> alert-dismissable col" role="alert">
+            <%= msg %>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        <% end %>
+      </div>
+      <!-- End Flash messages -->
+
+      <!-- Begin Title Code -->
+      <div id="title" class="row">
+        <div class="col">
+          <h1><%= yield(:title) %>
+        </div>
+      </div>
+      <!-- End Title Code -->
       <%= yield %>
     </main>
   </body>
