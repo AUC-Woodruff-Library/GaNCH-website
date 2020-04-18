@@ -28,7 +28,7 @@ class QueriesController < ApplicationController
 
     respond_to do |format|
       if @query.save
-        format.html { redirect_to @query, notice: 'Query was successfully created.' }
+        format.html { redirect_to queries_path, notice: 'Query was successfully created.' }
         format.json { render :show, status: :created, location: @query }
       else
         format.html { render :new }
@@ -62,13 +62,14 @@ class QueriesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_query
-      @query = Query.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def query_params
-      params.require(:query).permit(:title, :request, :response)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_query
+    @query = Query.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def query_params
+    params.require(:query).permit(:title, :request, :response)
+  end
 end

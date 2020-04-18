@@ -26,6 +26,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem "bootstrap_form", "~> 4.0"
 # For fetching wikidata
 gem 'httpclient'
+gem 'sparql-client'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
