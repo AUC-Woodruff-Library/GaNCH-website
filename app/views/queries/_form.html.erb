@@ -1,32 +1,9 @@
-<%= form_with(model: query, local: true) do |form| %>
-  <% if query.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(query.errors.count, "error") %> prohibited this query from being saved:</h2>
-
-      <ul>
-        <% query.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
+<%= bootstrap_form_with(model: query, local: true, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10") do |form| %>
+  <%= form.alert_message "Please fix the errors below", error_summary: false %>
+  <%= form.text_field :title %>
+  <%= form.text_area :request %>
+  <%= form.text_area :response %>
+  <%= form.form_group do %>
+    <%= form.primary "Create Query" %>
   <% end %>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :request %>
-    <%= form.text_area :request %>
-  </div>
-
-  <div class="field">
-    <%= form.label :response %>
-    <%= form.text_area :response %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>
