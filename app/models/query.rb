@@ -17,7 +17,7 @@ class Query < ApplicationRecord
     response = sparql.query(self.request)
 
     # sparql query will return nil on error
-    self.response = response unless response.nil?
+    self.response = response.to_json unless response.nil?
 
     logger.debug("Wikimedia query response: #{response}")
 
