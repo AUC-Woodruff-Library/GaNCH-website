@@ -1,4 +1,20 @@
-<%= render 'query', query: @query %>
+<h1>Table</h1>
+<table>
+  <thead class="thead">
+    <% parse_response_headers(@query.response).each do |column| %>
+      <th><%= column %></th>
+    <% end %>
+  </thead>
+  <tbody>
+    <% parse_response_body(@query.response).each do |row| %>
+      <tr>
+        <% row.each do |item| %>
+        <td><%= item[1]["value"] %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= link_to 'Edit', edit_query_path(@query) %> |
 <%= link_to 'Back', queries_path %>
