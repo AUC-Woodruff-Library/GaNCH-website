@@ -1,15 +1,15 @@
 <h1>Table</h1>
-<table>
+<table id="table" data-toggle="table" data-sortable="true">
   <thead class="thead">
-    <% parse_response_headers(@query.response).each do |column| %>
-      <th><%= column %></th>
+    <% @query.headers.each do |column| %>
+      <th data-field="<%= column %>" data-sortable="true"><%= column %></th>
     <% end %>
   </thead>
   <tbody>
-    <% parse_response_body(@query.response).each do |row| %>
+    <% @query.body.each do |row| %>
       <tr>
-        <% row.each do |item| %>
-        <td><%= item[1]["value"] %></td>
+        <% @query.headers.each do |col| %>
+        <td><%= !row[col].nil? ? row[col]['value'] : '' %></td>
         <% end %>
       </tr>
     <% end %>

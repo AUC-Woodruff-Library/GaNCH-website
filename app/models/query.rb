@@ -8,6 +8,20 @@ class Query < ApplicationRecord
   define_model_callbacks :update
   before_save :get_query_response
 
+  def headers
+    hash = JSON.parse(self.response)
+    headers = hash['head']['vars']
+    logger.debug "Response hash vars: #{headers.inspect}"
+
+    return headers
+  end
+
+  def body
+    hash = JSON.parse(self.response)
+    body = hash['results']['bindings']
+    return body
+  end
+
   private
 
   # send request to wikidata as a query
