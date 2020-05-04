@@ -9,7 +9,7 @@
     <% @query.body.each do |row| %>
       <tr>
         <% @query.headers.each do |col| %>
-        <td><%= !row[col].nil? ? row[col]['value'] : '' %></td>
+          <td><%= !row[col].nil? ? row[col]['value'] : '' %></td>
         <% end %>
       </tr>
     <% end %>

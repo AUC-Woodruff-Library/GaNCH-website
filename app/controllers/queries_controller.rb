@@ -1,5 +1,6 @@
 class QueriesController < ApplicationController
-  before_action :set_query, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate, except: [:show]
+  before_action :load_query, only: [:show, :edit, :update, :destroy]
 
   # GET /queries
   # GET /queries.json
@@ -25,6 +26,7 @@ class QueriesController < ApplicationController
   # POST /queries.json
   def create
     @query = Query.new(query_params)
+    @query.user = current_user
 
     respond_to do |format|
       if @query.save
@@ -64,8 +66,8 @@ class QueriesController < ApplicationController
   private
 
   # Use callbacks to share common setup or constraints between actions.
-  def set_query
-    @query = Query.find(params[:id])
+  def load_query
+    @query = current_user.queries.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.

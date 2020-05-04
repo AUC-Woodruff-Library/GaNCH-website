@@ -16,6 +16,7 @@
         <td><%= query.title %></td>
         <td><%= query.request %></td>
         <td><%= truncate query.response %></td>
+        <td>created by: <%= query.inspect %></td>
         <td><%= link_to 'Show', query %></td>
         <td><%= link_to 'Edit', edit_query_path(query) %></td>
         <td><%= link_to 'Destroy', query, method: :delete, data: { confirm: 'Are you sure?' } %></td>

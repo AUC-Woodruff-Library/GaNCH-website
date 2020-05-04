@@ -27,7 +27,11 @@ gem "bootstrap_form", "~> 4.0"
 # For fetching wikidata
 gem 'httpclient'
 gem 'sparql-client'
+# gem 'rdf-json'
+gem 'linkeddata'
 
+# For improved UI on table
+gem "bootstrap-table-rails"
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -37,6 +41,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'awesome_print'
 end
 
 group :development do

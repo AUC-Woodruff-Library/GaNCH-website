@@ -2,6 +2,8 @@ class Query < ApplicationRecord
   require "sparql/client"
   extend ActiveModel::Callbacks
 
+  belongs_to :user
+
   validates :title, presence: true
   validates :request, presence: true
 

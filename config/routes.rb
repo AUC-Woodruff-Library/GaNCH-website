@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  root to: "queries#index"
+  root to: "static_pages#index"
 
   get "about", to: "static_pages#index"
   get "signup" => "users#new"
   get "login" => "sessions#new"
+  get "logout" => "sessions#destroy"
 
   resources :queries
   resources :users 

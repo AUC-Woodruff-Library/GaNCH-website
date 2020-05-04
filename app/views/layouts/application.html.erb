@@ -22,8 +22,9 @@
           <%= nav_link "About", about_path %>
         </ul>
         <ul class="navbar-nav pull-right mr-auto">
-          <% if session[:user_id] != nil %>
-            <%= nav_link "Logout", "/logout" %>
+          <% if current_user %>
+            <%= nav_link current_user.name, current_user %>
+            <%= nav_link "Logout", logout_path %>
           <% else %>
             <%= nav_link "Sign Up", signup_path %>
             <%= nav_link "Login", login_path %>
