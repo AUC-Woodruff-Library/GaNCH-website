@@ -1,8 +1,8 @@
 <h1>Table</h1>
-<table id="table" data-toggle="table" data-sortable="true">
+<table id="table" data-toggle="table" data-sortable="true" data-search="true">
   <thead class="thead">
     <% @query.headers.each do |column| %>
-      <th data-field="<%= column %>" data-sortable="true"><%= column %></th>
+      <th data-field="<%= column %>" data-sortable="true"><%= column %><i class="fas fa-flag"></i></th>
     <% end %>
   </thead>
   <tbody>
@@ -15,6 +15,15 @@
     <% end %>
   </tbody>
 </table>
+
+<h1>Map</h1>
+<div id="map">
+<%= map(:center => {
+  :container_id => 'map',
+  :latlng => [32.8408677, -83.2727063],
+  :zoom => 7
+}) %>
+</div>
 
 <%= link_to 'Edit', edit_query_path(@query) %> |
 <%= link_to 'Back', queries_path %>

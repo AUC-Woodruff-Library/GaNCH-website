@@ -7,6 +7,8 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+require("leaflet")
+require("bootstrap-table")
 
 import '../stylesheets/application'
 import './bootstrap_custom.js'

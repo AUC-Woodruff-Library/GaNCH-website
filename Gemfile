@@ -24,16 +24,23 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem "bootstrap_form", "~> 4.0"
+
 # For fetching wikidata
 gem 'httpclient'
 gem 'sparql-client'
 # gem 'rdf-json'
+# for processing data and rendering map
 gem 'linkeddata'
+gem 'leaflet-rails'
 
 # For improved UI on table
 gem "bootstrap-table-rails"
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
+
+# testing production env locally
+gem 'rails_12factor'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
