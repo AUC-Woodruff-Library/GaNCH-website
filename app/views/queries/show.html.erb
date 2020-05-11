@@ -18,12 +18,29 @@
 
 <h1>Map</h1>
 <div id="map">
-<%= map(:center => {
+<% @markers = [
+      {
+        :latlng => [32.8408677, -83.2727063],
+        :popup => "Map Center",
+        :icon => {:icon_url => 'https://unpkg.com/leaflet@1.6.0/dist/images/marker-icon.png'}
+      }
+    ] %>
+<% @query.body.each do |row| %>
+  <% if !row['coordinate_location'].nil? %>
+  <% @latlng = row['coordinate_location']['value'].match(/Point\((.+)\)/)[1].split(" ") %>
+  <% @markers << { :latlng => [@latlng[1], @latlng[0]], :popup => row['libraryLabel']['value'], :icon => {:icon_url => 'https://unpkg.com/leaflet@1.6.0/dist/images/marker-icon.png'}} %>
+  <% end %>
+<% end %>
+<% @myMap = map(:center => {
   :container_id => 'map',
   :latlng => [32.8408677, -83.2727063],
   :zoom => 7
-}) %>
+  },
+  :markers => @markers ) %>
+<%= @myMap %>
 </div>
 
 <%= link_to 'Edit', edit_query_path(@query) %> |
 <%= link_to 'Back', queries_path %>
+
+<%= javascript_pack_tag 'mapbuilder' %>
