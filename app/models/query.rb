@@ -7,6 +7,8 @@ class Query < ApplicationRecord
   validates :title, presence: true
   validates :request, presence: true
 
+  before_save :sanitize_request_string
+
   define_model_callbacks :update
 
   def headers
@@ -22,5 +24,12 @@ class Query < ApplicationRecord
     hash = JSON.parse(self.response)
     body = hash['results']['bindings']
     return body
-  end  
+  end
+
+  private
+
+  def sanitize_request_string
+    # exotic whitespace characters will cause wikidata to reject the query
+    self.request.gsub!(/\u00A0+/, ' ')
+  end
 end
