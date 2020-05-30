@@ -12,6 +12,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new user_params
     if @user.save
+      # Tell the UserMailer to send a welcome email after save
+      UserMailer.with(user: @user).welcome_email.deliver_later
+
       login(@user)
       redirect_to root_path, notice: "Account Created."
     else
