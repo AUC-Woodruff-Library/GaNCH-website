@@ -33,7 +33,7 @@ class QueriesController < ApplicationController
     respond_to do |format|
       if @query.save
         WikidataQueryJob.perform_later @query
-        format.html { redirect_to queries_path, notice: 'Query was successfully created.' }
+        format.html { redirect_to queries_path, notice: 'Query was successfully created. Allow 30 seconds for Wikidata to run your query.' }
         format.json { render :show, status: :created, location: @query }
       else
         format.html { render :new }
@@ -48,7 +48,7 @@ class QueriesController < ApplicationController
     respond_to do |format|
       if @query.update(query_params)
         WikidataQueryJob.perform_later @query
-        format.html { redirect_to @query, notice: 'Query was successfully updated.' }
+        format.html { redirect_to queries_path, notice: 'Query was successfully updated. Allow 30 seconds for Wikidata to run your query.' }
         format.json { render :show, status: :ok, location: @query }
       else
         format.html { render :edit }
