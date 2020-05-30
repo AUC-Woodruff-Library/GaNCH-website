@@ -1,5 +1,5 @@
 class QueriesController < ApplicationController
-  skip_forgery_protection
+  # skip_forgery_protection
 
   # before_action :authenticate, except: [:show]
   before_action :load_query, only: [:show, :edit, :update, :destroy]
@@ -32,6 +32,7 @@ class QueriesController < ApplicationController
 
     respond_to do |format|
       if @query.save
+        WikidataQueryJob.perform_later @query
         format.html { redirect_to queries_path, notice: 'Query was successfully created.' }
         format.json { render :show, status: :created, location: @query }
       else
@@ -46,6 +47,7 @@ class QueriesController < ApplicationController
   def update
     respond_to do |format|
       if @query.update(query_params)
+        WikidataQueryJob.perform_later @query
         format.html { redirect_to @query, notice: 'Query was successfully updated.' }
         format.json { render :show, status: :ok, location: @query }
       else

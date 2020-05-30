@@ -1,9 +1,15 @@
 <%= bootstrap_form_with(model: query, local: true, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10") do |form| %>
   <%= form.alert_message "Please fix the errors below", error_summary: false %>
   <%= form.text_field :title %>
-  <%= form.text_area :request %>
-  <%= form.text_area :response %>
+  <%= form.text_area :request, :label => 'Wikidata query', :rows => 10 %>
+  <% unless query.id.nil? %>
+    <%= form.text_area :response, :readonly => true, :label => 'Wikidata response', :rows => query.response ? 10 : 2 %>
+  <% end %>
   <%= form.form_group do %>
+  <% if query.id.nil? %>
     <%= form.primary "Create Query" %>
+  <% else %>
+    <%= form.primary "Update Query" %>
+  <% end %>
   <% end %>
 <% end %>
