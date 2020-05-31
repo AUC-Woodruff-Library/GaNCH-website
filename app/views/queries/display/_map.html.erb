@@ -1,11 +1,5 @@
 <div id="map" class="ganch-map">
-  <% @markers = [
-        {
-          :latlng => [32.8408677, -83.2727063],
-          :popup => "Map Center",
-          :icon => {:icon_url => 'https://unpkg.com/leaflet@1.6.0/dist/images/marker-icon.png'}
-        }
-      ] %>
+  <% @markers = [] %>
   <% @query.body.each do |row| %>
     <% if !row['coordinate_location'].nil? %>
     <% @latlng = row['coordinate_location']['value'].match(/Point\((.+)\)/)[1].split(" ") %>
