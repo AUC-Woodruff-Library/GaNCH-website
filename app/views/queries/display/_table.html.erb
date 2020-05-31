@@ -1,14 +1,23 @@
-<table id="table" data-toggle="table" data-sortable="true" data-search="true">
+<% headers, body = merge_first_and_label(@query.headers, @query.body) %>
+<table id="table" data-toggle="table" data-sortable="true" data-search="true" class="ganch-table">
   <thead class="thead">
-    <% @query.headers.each do |column| %>
+    <% headers.each do |column| %>
       <th data-field="<%= column %>" data-sortable="true"><%= column %><i class="fas fa-flag"></i></th>
     <% end %>
   </thead>
   <tbody>
-    <% @query.body.each do |row| %>
+    <% body.each do |row| %>
       <tr>
-        <% @query.headers.each do |col| %>
-          <td><%= !row[col].nil? ? row[col]['value'] : '' %></td>
+        <% headers.each do |col| %>
+          <td>
+            <% if !row[col].nil? %>
+              <% if row[col]['as_link'] %>
+                <%= row[col]['as_link'] %>
+              <% else %>
+                <%= row[col]['value'] || '' %>
+              <% end %>
+            <% end %>
+          </td>
         <% end %>
       </tr>
     <% end %>
