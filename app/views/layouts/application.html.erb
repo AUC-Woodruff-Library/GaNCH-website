@@ -11,28 +11,7 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-      <%= link_to "GaNCH", root_path, class: "navbar-brand" %>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbardExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-          <%= nav_link "Home", root_path %>
-          <%= nav_link "About", about_path %>
-        </ul>
-        <ul class="navbar-nav pull-right mr-auto">
-          <% if current_user %>
-            <%= nav_link current_user.name, current_user %>
-            <%= nav_link "Logout", logout_path %>
-          <% else %>
-            <%= nav_link "Sign Up", signup_path %>
-            <%= nav_link "Login", login_path %>
-          <% end %>
-        </ul>
-      </div>
-    </nav>
+    <%= render "layouts/nav" %>
     <main role="main" class="container">
       <!-- Begin Flash messages -->
       <div id="flash-messages" class="row">
