@@ -28,6 +28,7 @@ gem "bootstrap_form", "~> 4.0"
 # For fetching wikidata
 gem 'httpclient'
 gem 'sparql-client'
+gem 'delayed_job_active_record'
 # gem 'rdf-json'
 # for processing data and rendering map
 gem 'linkeddata'

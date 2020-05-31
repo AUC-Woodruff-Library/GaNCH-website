@@ -83,6 +83,11 @@ GEM
     concurrent-ruby (1.1.6)
     connection_pool (2.2.2)
     crass (1.0.6)
+    delayed_job (4.1.8)
+      activesupport (>= 3.0, < 6.1)
+    delayed_job_active_record (4.1.4)
+      activerecord (>= 3.0, < 6.1)
+      delayed_job (>= 3.0, < 5)
     ebnf (1.2.0)
       rdf (~> 3.1)
       sxp (~> 1.1)
@@ -361,6 +366,7 @@ DEPENDENCIES
   bootstrap_form (~> 4.0)
   byebug
   capybara (>= 2.15)
+  delayed_job_active_record
   httpclient
   jbuilder (~> 2.7)
   leaflet-rails
