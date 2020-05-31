@@ -1,44 +1,8 @@
 <h1>Table</h1>
-<table id="table" data-toggle="table" data-sortable="true" data-search="true">
-  <thead class="thead">
-    <% @query.headers.each do |column| %>
-      <th data-field="<%= column %>" data-sortable="true"><%= column %><i class="fas fa-flag"></i></th>
-    <% end %>
-  </thead>
-  <tbody>
-    <% @query.body.each do |row| %>
-      <tr>
-        <% @query.headers.each do |col| %>
-          <td><%= !row[col].nil? ? row[col]['value'] : '' %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render "queries/display/table" %>
 
 <h1>Map</h1>
-<div id="map">
-<% @markers = [
-      {
-        :latlng => [32.8408677, -83.2727063],
-        :popup => "Map Center",
-        :icon => {:icon_url => 'https://unpkg.com/leaflet@1.6.0/dist/images/marker-icon.png'}
-      }
-    ] %>
-<% @query.body.each do |row| %>
-  <% if !row['coordinate_location'].nil? %>
-  <% @latlng = row['coordinate_location']['value'].match(/Point\((.+)\)/)[1].split(" ") %>
-  <% @markers << { :latlng => [@latlng[1], @latlng[0]], :popup => get_row_label(row), :icon => {:icon_url => 'https://unpkg.com/leaflet@1.6.0/dist/images/marker-icon.png'}} %>
-  <% end %>
-<% end %>
-<% @myMap = map(:center => {
-  :container_id => 'map',
-  :latlng => [32.8408677, -83.2727063],
-  :zoom => 7
-  },
-  :markers => @markers ) %>
-<%= @myMap %>
-</div>
+<%= render "queries/display/map" %>
 
 <%= link_to 'Edit', edit_query_path(@query) %> |
 <%= link_to 'Back', queries_path %>

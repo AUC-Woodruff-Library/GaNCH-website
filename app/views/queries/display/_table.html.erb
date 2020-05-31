@@ -1,0 +1,16 @@
+<table id="table" data-toggle="table" data-sortable="true" data-search="true">
+  <thead class="thead">
+    <% @query.headers.each do |column| %>
+      <th data-field="<%= column %>" data-sortable="true"><%= column %><i class="fas fa-flag"></i></th>
+    <% end %>
+  </thead>
+  <tbody>
+    <% @query.body.each do |row| %>
+      <tr>
+        <% @query.headers.each do |col| %>
+          <td><%= !row[col].nil? ? row[col]['value'] : '' %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
