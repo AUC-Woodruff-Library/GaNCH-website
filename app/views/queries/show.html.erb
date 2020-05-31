@@ -28,7 +28,7 @@
 <% @query.body.each do |row| %>
   <% if !row['coordinate_location'].nil? %>
   <% @latlng = row['coordinate_location']['value'].match(/Point\((.+)\)/)[1].split(" ") %>
-  <% @markers << { :latlng => [@latlng[1], @latlng[0]], :popup => row.keys.detect { |k| k =~ /Label/ }['value'], :icon => {:icon_url => 'https://unpkg.com/leaflet@1.6.0/dist/images/marker-icon.png'}} %>
+  <% @markers << { :latlng => [@latlng[1], @latlng[0]], :popup => get_row_label(row), :icon => {:icon_url => 'https://unpkg.com/leaflet@1.6.0/dist/images/marker-icon.png'}} %>
   <% end %>
 <% end %>
 <% @myMap = map(:center => {
