@@ -1,5 +1,5 @@
 class RecipientsController < ApplicationController
-  skip_forgery_protection
+  #skip_forgery_protection
 
   before_action :authenticate
   before_action :load_recipient, only: [:show, :edit, :update, :destroy]

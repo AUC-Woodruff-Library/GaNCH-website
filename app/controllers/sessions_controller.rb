@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_forgery_protection
+  #skip_forgery_protection
     
   def new
   end
