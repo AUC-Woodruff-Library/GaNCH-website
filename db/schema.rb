@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_31_200547) do
+ActiveRecord::Schema.define(version: 2020_06_06_215810) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,14 +40,15 @@ ActiveRecord::Schema.define(version: 2020_05_31_200547) do
   end
 
   create_table "recipients", force: :cascade do |t|
-    t.string "name"
-    t.string "title"
     t.string "email"
     t.string "phone"
     t.string "organization"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
+    t.string "address"
+    t.string "location"
+    t.string "wikidata_url"
     t.index ["user_id"], name: "index_recipients_on_user_id"
   end
 

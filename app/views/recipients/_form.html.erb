@@ -1,10 +1,12 @@
 <%= bootstrap_form_with(model: recipient, local: true, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10") do |form| %>
   <%= form.alert_message "Please fix the errors below", error_summary: false %>
-  <%= form.text_field :name %>
-  <%= form.text_field :title %>
+
+  <%= form.text_field :organization %>
+  <%= form.text_field :wikidata_url %>
   <%= form.text_field :email %>
   <%= form.text_field :phone %>
-  <%= form.text_field :organization %>
+  <%= form.text_field :address %>
+  <%= form.text_field :location %>
 
   <%= form.form_group do %>
   <% if recipient.id.nil? %>

@@ -1,0 +1,22 @@
+Greetings!
+
+
+Please review the following emergency contact information for your organization.  Keeping this information up-to-date will help cultural heritage emergency responders find your organization in the event of a disaster.  If any of this information is no longer correct, please reply to this email with the corrected information:
+
+  Organization Name: <%= @recipient.organization %>
+  Street Address: <%= @recipient.address %>
+  Coordinate Location: <%= make_map_link @recipient.location %>
+  Phone Number: <%= @recipient.phone %>
+  Email address: <%= @recipient.email %>
+
+You can also review additional information about your organization on this webpage: <%= @recipient.wikidata_url %>
+
+
+For more information about this annual email reminder and our efforts to preserve Georgia’s Natural, Cultural, and Historic Organizations, please visit: <%= route_for :about %>
+
+
+Thanks,
+
+  The GaNCH Team
+
+  [sender email address]

@@ -1,3 +1,3 @@
 class Recipient < ApplicationRecord
-  validates :name, presence: true
+  validates :organization, presence: true
 end

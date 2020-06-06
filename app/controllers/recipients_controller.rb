@@ -5,7 +5,7 @@ class RecipientsController < ApplicationController
   before_action :load_recipient, only: [:show, :edit, :update, :destroy]
 
   def index
-    @recipients = Recipient.all
+    @recipients = Recipient.all.sort_by(&:id)
   end
 
   # GET /recipients/1
@@ -72,6 +72,6 @@ class RecipientsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def recipient_params
-    params.require(:recipient).permit(:name, :title, :email, :phone, :organization)
+    params.require(:recipient).permit(:organization, :wikidata_url, :email, :phone, :address, :location)
   end
 end
