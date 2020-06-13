@@ -1,15 +1,38 @@
+require 'erb'
 module QueriesHelper
   def get_user(query)
     @user = User.find(query.user_id)
   end
 
-  def get_row_label(row)
+  # display label for a map pin
+  def get_marker_pin_label(row)
     field = row.keys.detect { |k| k =~ /Label/i }
     if row[field]
       row[field]['value'].to_s
     else
       ''
     end
+  end
+
+  # wikidata link for a map pin
+  def get_marker_pin_url(row)
+    field = row.keys.detect { |k| k =~ /library/i }
+    if row[field]
+      row[field]['value'].to_s
+    else
+      ''
+    end
+  end
+
+  def render_pin(row)
+    label = get_marker_pin_label(row)
+    url = get_marker_pin_url(row)
+    template = tag.span do |span|
+      label
+    end
+    template += tag.br
+    template += link_to(url, url, { target: '_new' })
+    template
   end
 
   #
