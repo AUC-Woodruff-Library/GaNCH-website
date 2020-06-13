@@ -1,6 +1,11 @@
 @import './bootstrap_custom.scss';
 
 $nav-height: 56px;
+body {
+  a:visited {
+    color: darkblue;
+  }
+}
 main.container {
   margin-top: 56px;
 }
@@ -24,5 +29,26 @@ main.container {
   }
   a:visited {
     color: darkblue;
+  }
+}
+
+.project-logos {
+  display: flex;
+  margin-bottom: 20px;
+  .aucrwwl {
+    height: 100px;
+    margin-left: auto;
+  }
+}
+
+.about-the-project {
+  h1, h2 {
+    font-size: 20px;
+  }
+  section {
+    margin-top: 30px;
+    &:first-child {
+      margin-top: 0;
+    }
   }
 }
