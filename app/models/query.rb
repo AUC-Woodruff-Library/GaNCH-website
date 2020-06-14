@@ -5,11 +5,13 @@ class Query < ApplicationRecord
   belongs_to :user
 
   validates :title, presence: true
+  validates :scope, presence: true
   validates :request, presence: true
 
   before_save :sanitize_request_string
 
   define_model_callbacks :update
+  enum scope: [:state, :region, :county]
 
   def headers
     return nil if self.response == '' or self.response.nil?

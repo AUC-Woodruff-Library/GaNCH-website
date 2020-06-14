@@ -76,6 +76,6 @@ class QueriesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def query_params
-    params.require(:query).permit(:title, :request, :response)
+    params.require(:query).permit(:title, :scope, :request, :response)
   end
 end

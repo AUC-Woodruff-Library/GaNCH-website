@@ -1,6 +1,11 @@
 <%= bootstrap_form_with(model: query, local: true, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10") do |form| %>
   <%= form.alert_message "Please fix the errors below", error_summary: false %>
   <%= form.text_field :title %>
+  <%= form.select(:scope) do %>
+    <% [['State', :state], ['Region', :region], ['County', :county]].each do |c| %>
+      <%= content_tag(:option, c.first, value: c.last) %>
+    <% end %>
+  <% end %>
   <%= form.text_area :request, :label => 'Wikidata query', :rows => 10 %>
   <% unless query.id.nil? %>
     <%= form.text_area :response, :readonly => true, :label => 'Wikidata response', :rows => query.response ? 10 : 2 %>

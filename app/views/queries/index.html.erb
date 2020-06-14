@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>Title</th>
+      <th>Geo Scope</th>
       <th>Wikidata query</th>
       <th>Wikidata response</th>
       <th>Owner</th>
@@ -16,6 +17,7 @@
       <% user = get_user query %>
       <tr>
         <td><%= query.title %></td>
+        <td><%= query.scope %></td>
         <td><%= query.request %></td>
         <td><%= truncate query.response %></td>
         <td><%= user.name %></td>
