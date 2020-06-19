@@ -1,7 +1,7 @@
 <h1>Recipients</h1>
 
 <% if @recipients.length > 0 %>
-<table>
+<table class="ganch-table table-striped">
   <thead>
     <tr>
       <th>Organization</th>
@@ -22,7 +22,7 @@
         <td><%= recipient.organization %></td>
         <td><%= recipient.wikidata_url %></td>
         <td><%= recipient.email %></td>
-        <td><%= recipient.phone %></td>
+        <td><%= recipient.phone && link_to(recipient.phone, "tel:#{recipient.phone}") %></td>
         <td><%= recipient.address %></td>
         <td><%= recipient.location %></td>
 

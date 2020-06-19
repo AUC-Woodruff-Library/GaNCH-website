@@ -19,4 +19,23 @@ module RecipientsHelper
   def make_map_link(location)
     return make_location_url(parse_coords(location))
   end
+
+  # get the first label found in a record
+  def get_label(record)
+    field = record.keys.detect { |k| k =~ /Label/i }
+    if record[field]
+      record[field]['value'].to_s
+    else
+      ''
+    end
+  end
+
+  def get_email(hash)
+    raw = hash["value"]
+    raw.gsub('mailto:', '')
+  end
+
+  def get_phone_number(hash)
+    raw = hash["value"]
+  end
 end

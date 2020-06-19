@@ -3,7 +3,7 @@
   <%= form.text_field :title %>
   <%= form.select(:scope) do %>
     <% [['State', :state], ['Region', :region], ['County', :county]].each do |c| %>
-      <%= content_tag(:option, c.first, value: c.last) %>
+      <%= content_tag(:option, c.first, value: c.last, selected: c.last == query.scope.to_sym ) %>
     <% end %>
   <% end %>
   <%= form.text_area :request, :label => 'Wikidata query', :rows => 10 %>

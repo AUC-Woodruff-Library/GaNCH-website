@@ -3,6 +3,7 @@ class QueriesController < ApplicationController
 
   before_action :authenticate, except: [:show]
   before_action :load_query, only: [:show, :edit, :update, :destroy]
+  after_action :get_recipients, only: [:update]
 
   # GET /queries
   # GET /queries.json
@@ -33,7 +34,7 @@ class QueriesController < ApplicationController
 
     respond_to do |format|
       if @query.save
-        WikidataQueryJob.perform_later @query
+        WikidataQueryJob.perform_later(@query, current_user)
         format.html { redirect_to queries_path, notice: 'Query was successfully created. Allow 30 seconds for Wikidata to run your query.' }
         format.json { render :show, status: :created, location: @query }
       else
@@ -48,7 +49,7 @@ class QueriesController < ApplicationController
   def update
     respond_to do |format|
       if @query.update(query_params)
-        WikidataQueryJob.perform_later @query
+        WikidataQueryJob.perform_later(@query, current_user)
         format.html { redirect_to queries_path, notice: 'Query was successfully updated. Allow 30 seconds for Wikidata to run your query.' }
         format.json { render :show, status: :ok, location: @query }
       else
@@ -78,5 +79,11 @@ class QueriesController < ApplicationController
   # Only allow a list of trusted parameters through.
   def query_params
     params.require(:query).permit(:title, :scope, :request, :response)
+  end
+
+  # build recipient list from query response
+  def get_recipients
+    logger.debug("Sending response for recipient processing.")
+    Recipient.scrape(@query)
   end
 end
