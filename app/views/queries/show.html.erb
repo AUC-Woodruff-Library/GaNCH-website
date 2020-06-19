@@ -1,8 +1,17 @@
-<h1>Table</h1>
-<%= render "queries/display/table" %>
+<% if @query.request %>
+  <p>View this query in wikidata's <%= link_to('query editor', "#{@url}/##{url_encode_query(@query.request)}", { target: '_new' }) %></p>
+<% end %>
 
-<h1>Map</h1>
-<%= render "queries/display/map" %>
+<% if @query.response != '' && !@query.response.nil? %>
+  <h1>Table</h1>
+
+  <%= render "queries/display/table" %>
+
+  <h1>Map</h1>
+  <%= render "queries/display/map" %>
+<% else %>
+  <%=  render "queries/display/not_found" %>
+<% end %>
 
 <%= link_to 'Edit', edit_query_path(@query) %> |
 <%= link_to 'Back', queries_path %>

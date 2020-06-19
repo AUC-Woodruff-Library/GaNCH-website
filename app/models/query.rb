@@ -23,6 +23,7 @@ class Query < ApplicationRecord
   end
 
   def body
+    return {} if self.response == '' or self.response.nil?
     hash = JSON.parse(self.response)
     body = hash['results']['bindings']
     return body

@@ -62,4 +62,8 @@ module QueriesHelper
     end
     [head, body]
   end
+
+  def url_encode_query(str)
+    ERB::Util.url_encode(str)
+  end
 end

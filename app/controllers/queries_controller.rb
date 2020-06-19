@@ -13,6 +13,7 @@ class QueriesController < ApplicationController
   # GET /queries/1
   # GET /queries/1.json
   def show
+    @url = Rails.configuration.wikidata_url
   end
 
   # GET /queries/new

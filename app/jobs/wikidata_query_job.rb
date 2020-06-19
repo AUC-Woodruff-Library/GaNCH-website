@@ -2,8 +2,9 @@ class WikidataQueryJob < ApplicationJob
   queue_as :wikidata
 
   def perform(query)
+    url = Rails.configuration.wikidata_url
     throw if query.nil? || query.request.nil?
-    sparql = SPARQL::Client.new("https://query.wikidata.org/sparql")
+    sparql = SPARQL::Client.new("#{url}/sparql")
     logger.info('Sending query to Wikidata: #{query.request}')
     request = query.request
     response = sparql.query(request)
