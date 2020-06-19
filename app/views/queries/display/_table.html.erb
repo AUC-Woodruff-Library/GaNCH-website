@@ -1,5 +1,5 @@
 <% headers, body = merge_first_and_label(@query.headers, @query.body) %>
-<table id="table" data-toggle="table" data-sortable="true" data-search="true" class="ganch-table">
+<table id="table" data-toggle="table" data-sortable="true" data-search="true" class="ganch-table table-striped">
   <thead class="thead">
     <% headers.each do |column| %>
       <th data-field="<%= column %>" data-sortable="true"><%= column %><i class="fas fa-flag"></i></th>
