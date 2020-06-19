@@ -1,4 +1,4 @@
-<% if @query.request %>
+<% if @query.request && current_user %>
   <p>View this query in wikidata's <%= link_to('query editor', "#{@url}/##{url_encode_query(@query.request)}", { target: '_new' }) %></p>
 <% end %>
 
