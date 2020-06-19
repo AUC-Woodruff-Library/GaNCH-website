@@ -2,10 +2,13 @@
 
 $nav-height: 56px;
 body {
+  /* override some bootstrap grid settings */
   a:visited {
     color: darkblue;
   }
 }
+
+/* override some bootstrap grid settings */
 main.container {
   margin-top: 56px;
 }
@@ -21,6 +24,10 @@ main.container {
 
 .btn-secondary:visited {
   color: white;
+}
+
+.ganch-map {
+  margin-bottom: 2rem;
 }
 
 .ganch-table {
@@ -50,5 +57,14 @@ main.container {
     &:first-child {
       margin-top: 0;
     }
+  }
+}
+
+.query-title-container {
+  display: flex;
+  .wikidata-link {
+    align-self: center;
+    margin-left: auto;
+    margin-bottom: 0;
   }
 }
