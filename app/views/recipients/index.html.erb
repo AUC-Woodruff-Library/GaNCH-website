@@ -1,17 +1,14 @@
 <h1>Recipients</h1>
 
 <% if @recipients.length > 0 %>
-<table class="ganch-table table-striped">
+<table class="ganch-table recipient-table table-striped">
   <thead>
     <tr>
       <th>Organization</th>
-      <th>Wikidata URL</th>
       <th>Email</th>
       <th>Phone</th>
-      <th>Street Address</th>
-      <th>Location Coordinates</th>
       <th>Created by</th>
-      <th colspan="3" class="text-center">Actions</th>
+      <th>Part Of</th>
     </tr>
   </thead>
 
@@ -20,16 +17,10 @@
       <% user = get_user recipient %>
       <tr>
         <td><%= recipient.organization %></td>
-        <td><%= recipient.wikidata_url %></td>
-        <td><%= recipient.email %></td>
-        <td><%= recipient.phone && link_to(recipient.phone, "tel:#{recipient.phone}") %></td>
-        <td><%= recipient.address %></td>
-        <td><%= recipient.location %></td>
-
+        <td class="email"><%= recipient.email %></td>
+        <td class="phone"><%= recipient.phone && link_to(recipient.phone, "tel:#{recipient.phone}") %></td>
         <td><%= user.name %></td>
-        <td><%= link_to 'Show', recipient %></td>
-        <td><%= link_to 'Edit', edit_recipient_path(recipient) %></td>
-        <td><%= link_to 'Destroy', recipient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="query"><%= link_to recipient.query.title, recipient.query %></td>
       </tr>
     <% end %>
   </tbody>

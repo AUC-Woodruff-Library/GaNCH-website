@@ -8,6 +8,12 @@ Rails.application.routes.draw do
   get "logout" => "sessions#destroy"
 
   resources :queries
+  get "counties", to: "queries#counties"
+  get "regions", to: "queries#regions"
+  get "state", to: "queries#state"
+
+  get 'county(/:title)', to: 'queries#show_by_title'
+  get 'region(/:title)', to: 'queries#show_by_title'
   resources :users 
   resources :sessions
   resources :recipients

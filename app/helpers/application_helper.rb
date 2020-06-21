@@ -22,4 +22,8 @@ module ApplicationHelper
       end
     end
   end
+
+  def to_kebab_case(str)
+    return str.downcase.gsub(/\s+/, '-')
+  end
 end

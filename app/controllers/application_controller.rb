@@ -22,5 +22,9 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
+  def from_kebab_case(str)
+    return str.gsub('-', ' ')
+  end
+
 
 end

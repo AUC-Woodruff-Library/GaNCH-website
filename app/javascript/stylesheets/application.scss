@@ -39,6 +39,23 @@ main.container {
   }
 }
 
+.recipient-table {
+  td.phone {
+    min-width: 10em;
+  }
+  td.query {
+    min-width: 10em;
+  }
+}
+
+.scoped-queries-title {
+  text-transform: uppercase;
+}
+
+.home-description {
+  margin-bottom: 3rem;
+}
+
 .project-logos {
   display: flex;
   margin-bottom: 20px;

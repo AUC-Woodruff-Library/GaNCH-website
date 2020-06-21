@@ -11,10 +11,27 @@ class QueriesController < ApplicationController
     @queries = Query.all
   end
 
+  # GET /state
+  # GET /queries.json
+  def state
+    @query = Query.where(scope: 'state').first
+
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @query.errors, status: :unprocessable_entity }
+    end
+  end
+
   # GET /queries/1
   # GET /queries/1.json
   def show
     @url = Rails.configuration.wikidata_url
+  end
+
+  def show_by_title
+    @title = from_kebab_case(params[:title]).titleize
+    @query = Query.where("lower(title) = ?", @title.downcase).first
+    render :show
   end
 
   # GET /queries/new

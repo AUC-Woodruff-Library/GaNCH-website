@@ -5,6 +5,7 @@ class Query < ApplicationRecord
   belongs_to :user
 
   validates :title, presence: true
+  validates_uniqueness_of :title, :case_sensitive => false
   validates :scope, presence: true
   validates :request, presence: true
 
@@ -27,6 +28,11 @@ class Query < ApplicationRecord
     hash = JSON.parse(self.response)
     body = hash['results']['bindings']
     return body
+  end
+
+  def count_orgs
+    body = self.body
+    return body.length
   end
 
   private

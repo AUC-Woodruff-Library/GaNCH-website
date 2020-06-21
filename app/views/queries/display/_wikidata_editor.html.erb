@@ -1,0 +1,5 @@
+<% if @query.request && current_user %>
+  <p class="wikidata-link">
+    <%= link_to('See this search in Wikidata', "#{@url}/##{url_encode_query(@query.request)}", { target: '_new' }) %>
+  </p>
+<% end %>

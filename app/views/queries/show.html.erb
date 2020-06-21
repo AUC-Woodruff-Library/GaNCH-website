@@ -1,16 +1,11 @@
-<% if @query.response != '' && !@query.response.nil? %>
-  <div class="query-title-container">
-    <h1><%= @query.title %></h1>
-    <% if @query.request && current_user %>
-      <p class="wikidata-link">
-        <%= link_to('See this search in Wikidata', "#{@url}/##{url_encode_query(@query.request)}", { target: '_new' }) %>
-      </p>
-    <% end %>
-  </div>
+<div class="query-title-container">
+  <h1><%= @query.title %></h1>
+  <%= render "queries/display/wikidata_editor" %>
+</div>
 
+<% if @query.response != '' && !@query.response.nil? %>
   <%= render "queries/display/map" %>
   <%= render "queries/display/table" %>
-
 <% else %>
   <%=  render "queries/display/not_found" %>
 <% end %>

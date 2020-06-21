@@ -1,0 +1,24 @@
+<h1 class="scoped-queries-title"><%= @scope %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>No. Organizations</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @queries.each do |query| %>
+      <% user = get_user query %>
+      <tr>
+        <td><%= link_to(query.title, query_path(query)) %></td>
+        <td><%= query.count_orgs %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Query', new_query_path %>
