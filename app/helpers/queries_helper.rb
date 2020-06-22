@@ -16,7 +16,7 @@ module QueriesHelper
 
   # wikidata link for a map pin
   def get_marker_pin_url(row)
-    field = row.keys.detect { |k| k =~ /library/i }
+    field = row.keys.detect { |k| k =~ /(library|organization)/i }
     if row[field]
       row[field]['value'].to_s
     else
