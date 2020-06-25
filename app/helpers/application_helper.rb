@@ -14,6 +14,13 @@ module ApplicationHelper
     end
   end
 
+  # open link in new tab
+  def external_link(label, url = nil, options = {})
+    link_url = url || label
+    options[:target] = '_new' unless options[:target]
+    return link_to(label, url, options)
+  end
+
   def title(name, show_title = true)
     @show_title = show_title
     if @show_title
