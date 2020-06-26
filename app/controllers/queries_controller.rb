@@ -101,6 +101,6 @@ class QueriesController < ApplicationController
   # build recipient list from query response
   def get_recipients
     logger.debug("Sending response for recipient processing.")
-    if (@query.response) Recipient.scrape(@query)
+    Recipient.scrape(@query) if (@query.response)
   end
 end
