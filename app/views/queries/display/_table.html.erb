@@ -1,6 +1,5 @@
-<% cssClasses = "d-none" %>
-<% cssClasses += " d-sm-block d-md-block d-lg-none d-xs-none" if mobile_view %>
-<% cssClasses += " d-sm-none d-md-none d-lg-block d-xs-block" if !mobile_view %>
+<% cssClasses = "d-sm-block d-lg-none" if mobile_view %>
+<% cssClasses = "d-none d-lg-block d-xl-block" if !mobile_view %>
 
 <div class="<%= cssClasses %>">
   <table id="<%= id %>" data-toggle="table" data-sortable="true" data-search="true" data-card-view="<%= mobile_view.to_s %>" class="ganch-table table-striped">
