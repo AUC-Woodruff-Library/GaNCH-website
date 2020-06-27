@@ -39,6 +39,13 @@ main.container {
   }
 }
 
+.card-view-title {
+  margin-right: 0.5em;
+  &:after {
+    content: ':';
+  }
+}
+
 .recipient-table {
   td.phone {
     min-width: 10em;

@@ -1,25 +1,30 @@
-<% headers, body = merge_first_and_label(@query.headers, @query.body) %>
-<table id="table" data-toggle="table" data-sortable="true" data-search="true" class="ganch-table table-striped">
-  <thead class="thead">
-    <% headers.each do |column| %>
-      <th data-field="<%= column %>" data-sortable="true"><%= column %><i class="fas fa-flag"></i></th>
-    <% end %>
-  </thead>
-  <tbody>
-    <% body.each do |row| %>
-      <tr>
-        <% headers.each do |col| %>
-          <td>
-            <% if !row[col].nil? %>
-              <% if row[col]['as_link'] %>
-                <%= row[col]['as_link'] %>
-              <% else %>
-                <%= row[col]['value'] || '' %>
+<% cssClasses = "d-none" %>
+<% cssClasses += " d-sm-block d-md-block d-lg-none d-xs-none" if mobile_view %>
+<% cssClasses += " d-sm-none d-md-none d-lg-block d-xs-block" if !mobile_view %>
+
+<div class="<%= cssClasses %>">
+  <table id="<%= id %>" data-toggle="table" data-sortable="true" data-search="true" data-card-view="<%= mobile_view.to_s %>" class="ganch-table table-striped">
+    <thead class="thead">
+      <% headers.each do |column| %>
+        <th data-field="<%= column %>" data-sortable="true"><%= column %><i class="fas fa-flag"></i></th>
+      <% end %>
+    </thead>
+    <tbody>
+      <% body.each do |row| %>
+        <tr>
+          <% headers.each do |col| %>
+            <td>
+              <% if !row[col].nil? %>
+                <% if row[col]['as_link'] %>
+                  <%= row[col]['as_link'] %>
+                <% else %>
+                  <%= row[col]['value'] || '' %>
+                <% end %>
               <% end %>
-            <% end %>
-          </td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

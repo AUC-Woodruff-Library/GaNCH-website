@@ -4,8 +4,14 @@
 </div>
 
 <% if @query.response != '' && !@query.response.nil? %>
+  <%-# render map -%>
   <%= render "queries/display/map" %>
-  <%= render "queries/display/table" %>
+
+  <%-# render tables for desktop & mobile -%>
+  <% headers, body = merge_first_and_label(@query.headers, @query.body) %>
+  <% is_mobile = true %>
+  <%= render partial: "queries/display/table", locals: { headers: headers, body: body, mobile_view: is_mobile, id: 'mobile' } %>
+  <%= render partial: "queries/display/table", locals: { headers: headers, body: body, mobile_view: !is_mobile, id: 'desktop' }  %>
 <% else %>
   <%=  render "queries/display/not_found" %>
 <% end %>
