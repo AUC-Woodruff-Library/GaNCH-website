@@ -1,7 +1,7 @@
 class QueriesController < ApplicationController
   #skip_forgery_protection
 
-  before_action :authenticate, except: [:show]
+  before_action :authenticate, except: [:show, :show_by_title]
   before_action :load_query, only: [:show, :edit, :update, :destroy]
   after_action :get_recipients, only: [:update]
 
