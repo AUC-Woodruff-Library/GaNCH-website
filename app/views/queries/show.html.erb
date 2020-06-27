@@ -1,3 +1,5 @@
+<%=  render "static_pages/logos" %>
+
 <div class="query-title-container">
   <h1><%= @query.title %></h1>
   <%= render "queries/display/wikidata_editor" %>
@@ -16,6 +18,11 @@
   <%=  render "queries/display/not_found" %>
 <% end %>
 
-<%= link_to 'Edit', edit_query_path(@query) %> |
-<%= link_to 'Back', queries_path %>
-
+<footer>
+  <% if current_user %>
+    <%= link_to 'Edit', edit_query_path(@query) %> |
+    <%= link_to 'Back', queries_path %>
+  <% else %>
+    <%= link_to 'Home', root_path %>
+  <% end %>
+</footer>

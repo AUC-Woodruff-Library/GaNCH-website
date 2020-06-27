@@ -63,12 +63,40 @@ main.container {
   margin-bottom: 3rem;
 }
 
+.home-nav {
+  margin-bottom: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  form, .form-group {
+    width: 100%;
+  }
+  label {
+    text-align: center;
+    width: 100%;
+  }
+  @media screen and (max-width: 765px) {
+    form, label, button {
+      max-width: 300px;
+    }
+  }
+}
+
 .project-logos {
   display: flex;
   margin-bottom: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+  .logo {
+    margin-bottom: 10px;
+  }
   .aucrwwl {
-    height: 100px;
-    margin-left: auto;
+    @media screen and (min-width: 576px) {
+      max-height: 100px;
+      margin-left: auto;
+      padding: 0;
+    }
   }
 }
 
@@ -91,4 +119,8 @@ main.container {
     margin-left: auto;
     margin-bottom: 0;
   }
+}
+
+footer {
+  margin: 30px 0;
 }

@@ -6,8 +6,25 @@
   <div>This is a publicly editable directory of Georgia's Natural, Cultural and Historic Organizations (NCHs), allowing for quick retrieval of location and contact information for disaster response. Directory information is compiled, updated, and uploaded directly to <%= link_to('Wikidata', wikidata_url) %>, the linked open data database from Wikimedia Foundation. Directory information is then delivered to this website where emergency responders can quickly search for NCHs in disaster areas.</div>
 </article>
 
-<%= link_to('All of Georgia', state_path) %>
-<%= bootstrap_form_tag url: '/' do |f| %>
-  <%= f.select :region_query, @regions.collect { |r| [ r.title, r.id, data: { url: '/region/' + to_kebab_case(r.title) } ] }, { label: 'GEMA Region', include_blank: true }%>
-  <%= f.select :county_query, @counties.collect { |c| [ c.title, c.id, data: { url: '/county/' + to_kebab_case(c.title) } ] }, { label: 'County', include_blank: true } %>
-<% end %>
+<section>
+<div class="row">
+  <div class="col-12 col-md-4 home-nav">
+    <div class="form-group">
+      <label for="all">All of Georgia</label>
+      <button class="form-control" name="all"><%= link_to('Georgia', state_path) %></button>
+    </div>
+  </div>
+  <div class="col-12 col-md-4 home-nav">
+    <%= bootstrap_form_tag url: '/' do |f| %>
+      <%= f.select :region_query, @regions.collect { |r| [ r.title, r.id, data: { url: '/region/' + to_kebab_case(r.title) } ] }, { label: 'GEMA Region', include_blank: true } %>
+    <% end %>
+  </div>
+  <div class="col-12 col-md-4 home-nav">
+    <%= bootstrap_form_tag url: '/' do |f| %>
+      <%= f.select :county_query, @counties.collect { |c| [ c.title, c.id, data: { url: '/county/' + to_kebab_case(c.title) } ] }, { label: 'County', include_blank: true } %>
+    <% end %>
+  </div>
+</div>
+  
+
+</section>
