@@ -16,12 +16,12 @@
   </div>
   <div class="col-12 col-md-4 home-nav">
     <%= bootstrap_form_tag url: '/' do |f| %>
-      <%= f.select :region_query, @regions.collect { |r| [ r.title, r.id, data: { url: '/region/' + to_kebab_case(r.title) } ] }, { label: 'GEMA Region', include_blank: true } %>
+      <%= f.select :region_query, @regions.sort_by(&:title).collect { |r| [ r.title, r.id, data: { url: '/region/' + to_kebab_case(r.title) } ] }, { label: 'GEMA Region', include_blank: true } %>
     <% end %>
   </div>
   <div class="col-12 col-md-4 home-nav">
     <%= bootstrap_form_tag url: '/' do |f| %>
-      <%= f.select :county_query, @counties.collect { |c| [ c.title, c.id, data: { url: '/county/' + to_kebab_case(c.title) } ] }, { label: 'County', include_blank: true } %>
+      <%= f.select :county_query, @counties.sort_by(&:title).collect { |c| [ c.title, c.id, data: { url: '/county/' + to_kebab_case(c.title) } ] }, { label: 'County', include_blank: true } %>
     <% end %>
   </div>
 </div>
