@@ -9,6 +9,7 @@
       <th>Phone</th>
       <th>Created by</th>
       <th>Part Of</th>
+      <th>Actions</th>
     </tr>
   </thead>
 
@@ -20,7 +21,8 @@
         <td class="email"><%= recipient.email %></td>
         <td class="phone"><%= recipient.phone && link_to(recipient.phone, "tel:#{recipient.phone}") %></td>
         <td><%= user.name %></td>
-        <td class="query"><%= link_to recipient.query.title, recipient.query %></td>
+        <td class="query"><%= recipient.query ? link_to(recipient.query.title, recipient.query) : nil %></td>
+        <td><%= link_to 'Destroy', recipient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
