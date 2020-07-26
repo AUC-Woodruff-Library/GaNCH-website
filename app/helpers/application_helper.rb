@@ -21,6 +21,14 @@ module ApplicationHelper
     return link_to(label, url, options)
   end
 
+  def meta_tag(tag, text)
+    content_for :"meta_#{tag}", text
+  end
+
+  def yield_meta_tag(tag, default_text='')
+    content_for?(:"meta_#{tag}") ? content_for(:"meta_#{tag}") : default_text
+  end
+
   def title(name, show_title = true)
     @show_title = show_title
     if @show_title
