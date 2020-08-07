@@ -6,6 +6,16 @@ body {
   a:visited {
     color: darkblue;
   }
+  a:hover {
+    background-color: #fafafa;
+  }
+}
+
+nav.bg-dark {
+  a:hover {
+    color: #fff;
+    background-color: #000;
+  }
 }
 
 /* override some bootstrap grid settings */
@@ -122,4 +132,10 @@ main.container {
 
 footer {
   margin: 30px 0;
+}
+
+/* adjust leaflet marker pin to center */
+.leaflet-marker-icon {
+  top: -20.5px;
+  left: -12.5px;
 }
