@@ -13,7 +13,7 @@ return if defined?(Rails::Console) || Rails.env.test? || File.split($0).last == 
 # end
 
 # get latest data from Wikidata for our objects
-scheduler.every '1h' do
+scheduler.every '15m' do
   url = Rails.configuration.wikidata_url
   sparql = SPARQL::Client.new("#{url}/sparql")
 
