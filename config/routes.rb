@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   get "home", to: "static_pages#index"
   get "about", to: "static_pages#about"
+  get "export", to: "static_pages#export_instructions"
   get "signup" => "users#new"
   get "login" => "sessions#new"
   get "logout" => "sessions#destroy"

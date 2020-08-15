@@ -8,6 +8,7 @@
         <ul class="navbar-nav mr-auto">
           <%= nav_link "Home", root_path %>
           <%= nav_link "About", about_path %>
+          <%= nav_link "Export", export_path %>
           <% if current_user %>
             <%= nav_link "Queries", queries_path %>
             <%= nav_link "Recipients", recipients_path %>

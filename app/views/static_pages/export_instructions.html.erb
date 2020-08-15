@@ -1,0 +1,23 @@
+<% title "Export Instructions", false %>
+
+<article class="export-instructions">
+  <h1>Export GaNCH search results as a CSV file</h1>
+  <p>Data for the GaNCH project is stored in Wikidata.  Use the following steps to perform a GaNCH search directly in Wikidata and export the results as a CSV (Comma Seperated Value) table file.</p>
+
+  <p>From the GaNCH homepage, choose the dataset search that you want to download.  For our example, we'll use <b>GEMA Region 1</b>.
+  </p>
+  <div><%= image_tag "export_instructions/GaNCH_export_instructions_01.jpg", class: '' %></div>
+
+  <p>Next, click on the link <b>See this table in Wikidata</b>.  This will open up the search in a new browser tab at the Wikidata Query Service website.</p>
+  <div><%= image_tag "export_instructions/GaNCH_export_instructions_02.jpg", class: '' %></div>
+
+
+  <p>Then, click on the <b>blue play button</b> in the lower-left to run the SPARQL query search in Wikidata.  Wait a few moments and the table of data will appear below.</p>
+  <div><%= image_tag "export_instructions/GaNCH_export_instructions_03.jpg", class: '' %></div>
+  
+  <p>Last, click the <b>Download</b> drop-down menu and select <b>CSV File</b>.  This will save your file as <b>query.csv</b>.</p>
+  <div><%= image_tag "export_instructions/GaNCH_export_instructions_04.jpg", class: '' %></div>
+  
+  <p>You can now import the CSV file into the spreadsheet software of your choice (i.e. <%= external_link('LibreOffice Calc', 'https://help.libreoffice.org/6.4/en-US/text/scalc/guide/csv_files.html')%>, <%= external_link('Microsoft Excel', 'https://support.microsoft.com/en-us/office/import-or-export-text-txt-or-csv-files-5250ac4c-663c-47ce-937b-339e391393ba') %>, or <%= external_link('Google Sheet', 'https://support.google.com/docs/answer/40608') %>).</p>
+  
+</article>
