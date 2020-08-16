@@ -1,16 +1,29 @@
 require 'rufus-scheduler'
+require 'rake'
 
 scheduler = Rufus::Scheduler.singleton
 
 # avoid creating scheduler in console and rake tasks
 return if defined?(Rails::Console) || Rails.env.test? || File.split($0).last == 'rake'
 
-# test schedular is up and running
+# test scheduler is up and running
 # scheduler.every '1m' do
 
 #   Rails.logger.info "hello, it's #{Time.now}"
 #   Rails.logger.flush
 # end
+
+# use only if you need to run Rake without console access
+scheduler.at '2020/08/16 19:30:00' do
+  Rails.logger.info("Running db:migrate")
+  Ganch::Application.load_tasks
+  begin
+    Rake::Task['db:migrate'].invoke
+    Rails.logger.info("db:migrate complete")
+  rescue
+    Rails.logger.error("db:migrate was unable to run successfully!!")
+  end
+end
 
 # get latest data from Wikidata for our objects
 scheduler.every '15m' do
