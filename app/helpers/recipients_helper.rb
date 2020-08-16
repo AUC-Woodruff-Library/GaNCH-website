@@ -3,10 +3,15 @@ module RecipientsHelper
 
   # get lat/long out of Point(-81.095169 32.077904)
   def parse_coords(str)
+    return [] if str.nil?
     regex = /(-?\d{1,3}\.\d+)[\s,](\d{1,2}\.\d+)/
     matchData = str.match(regex)
-    long, lat = matchData[1], matchData[2]
-    [lat, long]
+    if matchData
+      long, lat = matchData[1], matchData[2]
+      [lat, long]
+    else
+      []
+    end
   end
 
   # return a Google Maps URL for lat/long pair

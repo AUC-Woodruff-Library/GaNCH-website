@@ -26,9 +26,13 @@ scheduler.every '15m' do
     if !response.nil?
 
       # convert response to JSON and save
-      query.response = response.to_json
+      updated_response = response.to_json
       Rails.logger.info("Updating Wikidata response for query object #{query.id}")
-      query.save!
+      query.update(response: updated_response, queried_at: DateTime.current)
+
+      # scrape query response for email recipients
+      Rails.logger.debug("Sending response for recipient processing.")
+      Recipient.scrape(query) unless query.response.empty?
     end
   end
 end

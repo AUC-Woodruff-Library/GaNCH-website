@@ -13,7 +13,7 @@ class Recipient < ApplicationRecord
     return unless json["results"]["bindings"]
 
     # clear out old recipient data
-    Recipient.where(query_id: query.id).each do |r| r.delete end
+    Recipient.destroy_by(query_id: query.id)
 
     bindings = json["results"]["bindings"]
     bindings.each do |entry|
@@ -25,6 +25,9 @@ class Recipient < ApplicationRecord
       recipient.organization = RecipientsController.helpers.get_label(entry)
       recipient.query = query
       recipient.user = query.user
+      recipient.address = entry['street_address'] && entry['street_address']['value']
+      recipient.wikidata_url = entry['organization'] && entry['organization']['value']
+      recipient.location = entry['coordinate_location'] && entry['coordinate_location']['value']
       recipient.save!
     end
   end

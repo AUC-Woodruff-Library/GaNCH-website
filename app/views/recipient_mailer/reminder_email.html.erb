@@ -14,7 +14,7 @@
       <li>Email address: <%= @recipient.email %></li>
     </ul>
     <p>
-      You can also review additional information about your organization on this webpage: <%= link_to "#{@recipient.wikidata_url}", @recipient.wikidata_url, { target: '_new' } %><br>
+      You can also review additional information about your organization on this webpage: <%= external_link "#{@recipient.wikidata_url}", @recipient.wikidata_url, { target: '_new' } %><br>
     </p>
     <p>
       For more information about this annual email reminder and our efforts to preserve Georgia’s Natural, Cultural, and Historic Organizations, please visit: <%= route_for :about %>
