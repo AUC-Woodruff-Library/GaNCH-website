@@ -18,7 +18,7 @@ module ApplicationHelper
   def external_link(label, url = nil, options = {})
     link_url = url || label
     options[:target] = '_new' unless options[:target]
-    return link_to(label, url, options)
+    return link_to(label, link_url, options)
   end
 
   def meta_tag(tag, text)
