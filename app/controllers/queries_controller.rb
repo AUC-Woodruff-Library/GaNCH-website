@@ -5,6 +5,8 @@ class QueriesController < ApplicationController
   before_action :load_query, only: [:show, :edit, :update, :destroy]
   after_action :get_recipients, only: [:update]
 
+  @@url = Rails.configuration.wikidata_url
+
   # GET /queries
   # GET /queries.json
   def index
@@ -25,12 +27,13 @@ class QueriesController < ApplicationController
   # GET /queries/1
   # GET /queries/1.json
   def show
-    @url = Rails.configuration.wikidata_url
+    @url = @@url
   end
 
   def show_by_title
     @title = from_kebab_case(params[:title]).titleize
     @query = Query.where("lower(title) = ?", @title.downcase).first
+    @url = @@url
     render :show
   end
 
