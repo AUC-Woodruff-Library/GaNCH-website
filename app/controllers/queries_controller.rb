@@ -17,6 +17,7 @@ class QueriesController < ApplicationController
   # GET /queries.json
   def state
     @query = Query.where(scope: 'state').first
+    @url = @@url
 
     respond_to do |format|
       format.html { render :show }
