@@ -14,16 +14,16 @@ return if defined?(Rails::Console) || Rails.env.test? || File.split($0).last == 
 # end
 
 # use only if you need to run Rake without console access
-scheduler.at '2020/08/16 19:30:00' do
-  Rails.logger.info("Running db:migrate")
-  Ganch::Application.load_tasks
-  begin
-    Rake::Task['db:migrate'].invoke
-    Rails.logger.info("db:migrate complete")
-  rescue
-    Rails.logger.error("db:migrate was unable to run successfully!!")
-  end
-end
+# scheduler.at '2020/08/16 19:30:00' do
+#   Rails.logger.info("Running db:migrate")
+#   Ganch::Application.load_tasks
+#   begin
+#     Rake::Task['db:migrate'].invoke
+#     Rails.logger.info("db:migrate complete")
+#   rescue
+#     Rails.logger.error("db:migrate was unable to run successfully!!")
+#   end
+# end
 
 # get latest data from Wikidata for our objects
 scheduler.every '15m' do
