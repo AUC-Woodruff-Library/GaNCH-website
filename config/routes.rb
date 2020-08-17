@@ -18,5 +18,8 @@ Rails.application.routes.draw do
   resources :users 
   resources :sessions
   resources :recipients
+
+  match 'send_reminders_confirm', to: "reminders#send_reminders_confirm", via: [:delete]
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

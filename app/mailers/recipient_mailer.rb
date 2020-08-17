@@ -6,7 +6,7 @@ class RecipientMailer < ApplicationMailer
 
   def reminder_email
     @recipient = params[:recipient]
-    logger.info "Welcome email generated for recipient: #{@recipient.inspect}"
+    logger.info "Reminder email generated for recipient: #{@recipient.inspect}"
     mail(to: @recipient.email, subject: 'Review and update your organization’s emergency contact information')
   end
 end

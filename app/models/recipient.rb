@@ -23,7 +23,7 @@ class Recipient < ApplicationRecord
       recipient.email = RecipientsController.helpers.get_email(entry["e_mail_address"])
       recipient.phone = RecipientsController.helpers.get_phone_number(entry["phone_number"]) if entry.has_key? "phone_number"
       recipient.organization = RecipientsController.helpers.get_label(entry)
-      recipient.query = query
+      recipient.query_id = query.id
       recipient.user = query.user
       recipient.address = entry['street_address'] && entry['street_address']['value']
       recipient.wikidata_url = entry['organization'] && entry['organization']['value']

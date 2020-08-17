@@ -1,0 +1,22 @@
+<div class="reminders-sent">
+  <h3>Batch Reminder Receipt: <%= DateTime.current %></h3>
+  <div>
+    <% if @recipients.length > 0 %>
+      <%= @recipients.length %> unique recipient emails selected for processing.
+      <%= render partial: 'table', locals: { id: 'success', recipients: @recipients,  } %>
+    <% else %>
+      no such luck :(
+    <% end %>
+  </div>
+
+  <div>
+    <% if @errors.length > 0 %>
+      <%= @errors.length %> items had errors.
+      <%= render partial: 'table', locals: { id: 'success', recipients: @errors,  } %>
+    <% else %>
+      no errors
+    <% end %>
+  </div>
+
+  <%= link_to 'Back', recipients_path, class: "btn btn-secondary" %>
+</div>

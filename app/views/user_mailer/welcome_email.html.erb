@@ -7,10 +7,10 @@
     <h1>Welcome to GaNCH, <%= @user.name %></h1>
     <p>
       You have successfully signed up to GaNCH,
-      your username is: <%= @user.name %>.<br>
+      your username is: <b><%= @user.name %></b>.<br>
     </p>
     <p>
-      To login to the site, just follow this link: <%= @url %>.
+      To login to the site, just follow this link: <a href="//<%= @url %>" ><%= @url %></a>.
     </p>
     <p>Thanks for joining and have a great day!</p>
   </body>

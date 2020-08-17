@@ -1,0 +1,19 @@
+<table id="<%= id %>" data-toggle="table" data-sortable="true" data-search="true" class="ganch-table table-striped">
+  <thead class="thead">
+    <tr>
+      <% ['organization','email','wikidata_url','query'].each do |column| %>
+        <th data-field="<%= column %>" data-sortable="true"><%= column %><i class="fas fa-flag"></i></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+  <% @recipients.each do |recipient| %>
+    <tr>
+      <td><%= recipient.organization %></td>
+      <td><%= recipient.email %></td>
+      <td><%= recipient.wikidata_url %></td>
+      <td class="query"><%= recipient.query ? link_to(recipient.query.title, recipient.query) : nil %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

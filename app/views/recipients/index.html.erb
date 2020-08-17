@@ -1,13 +1,15 @@
 <h1>Recipients</h1>
 
+<!-- TODO: move button to page footer -->
+<%= link_to "Send reminders", send_reminders_confirm_path, method: :delete, data: { confirm: "Are you sure?" } %>
+
 <% if @recipients.length > 0 %>
-<table class="ganch-table recipient-table table-striped">
+<table id="recipient-table" data-toggle="table" data-sortable="true" data-search="true" class="ganch-table recipient-table table-striped">
   <thead>
     <tr>
-      <th>Organization</th>
-      <th>Email</th>
-      <th>Phone</th>
-      <th>Created by</th>
+      <% ['organization','email','phone','user'].each do |column| %>
+        <th data-field="<%= column %>" data-sortable="true"><%= column %><i class="fas fa-flag"></i></th>
+      <% end %>
       <th>Part Of</th>
       <th>Actions</th>
     </tr>
@@ -30,5 +32,3 @@
 
 <br>
 <% end %>
-
-<%= link_to 'New recipient', new_recipient_path %>
