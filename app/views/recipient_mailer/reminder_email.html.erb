@@ -4,6 +4,9 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
+    <style>
+      li { line-height: 133%; }
+    </style>
     <strong>Greetings!</strong>
     <p>Please review the following emergency contact information for your organization.  Keeping this information up-to-date will help cultural heritage emergency responders find your organization in the event of a disaster.  If any of this information is no longer correct, please reply to this email with the corrected information:</p>
     <ul>
@@ -22,8 +25,8 @@
     <p>Thanks,
 
       The GaNCH Team
-
-      [sender email address]
+      <br />
+      <br /><a href="mailto:<%= headers.from.first %>"><%= headers.from.first %></a>
     </p>
   </body>
 </html>

@@ -1,5 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  # TODO: set default 'from' address
-  default from: 'from@example.com'
+  default from: Rails.configuration.action_mailer.default_options[:from]
   layout 'mailer'
 end
