@@ -25,6 +25,15 @@ return if defined?(Rails::Console) || Rails.env.test? || File.split($0).last == 
 #   end
 # end
 
+# load counties during initial startup
+scheduler.at '2020/08/20 12:00:00' do
+  no_counties_loaded = Query.where(scope: 'county').size
+  if no_counties_loaded == 0
+    Rails.logger.info("Running queries:add_county_queries ")
+    Rake::Task['queries:add_county_queries '].invoke
+  end
+end
+
 # get latest data from Wikidata for our objects
 scheduler.every '15m' do
   url = Rails.configuration.wikidata_url
