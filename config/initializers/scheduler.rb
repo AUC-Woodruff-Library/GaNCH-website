@@ -35,7 +35,7 @@ scheduler.at '2020/08/20 12:00:00' do
 end
 
 # get latest data from Wikidata for our objects
-scheduler.every '15m' do
+scheduler.every '1h' do
   url = Rails.configuration.wikidata_url
   sparql = SPARQL::Client.new("#{url}/sparql")
 
