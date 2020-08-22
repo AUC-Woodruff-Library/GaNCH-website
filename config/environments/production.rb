@@ -63,6 +63,9 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
   config.action_mailer.default_url_options= { host: "ganch.galileo.usg.edu" }
 
+  # Allow signups
+  config.permit_signups = ENV['GANCH_PERMIT_SIGNUPS']
+
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false

@@ -2,11 +2,20 @@ class UsersController < ApplicationController
   #skip_forgery_protection
   before_action :authenticate, except: [:new, :create]
 
+  @@permits_new_users = Rails.application.config.permit_signups
+  @@help_email = Rails.application.config.support_email
+
   def index
+    @users = User.all
   end
 
   def new
-    @user = User.new
+    if /yes|true/i =~ @@permits_new_users
+      @user = User.new
+    else
+      @email = @@help_email
+      render :forbidden
+    end
   end
 
   def create
@@ -24,6 +33,9 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+  end
+
+  def forbidden
   end
 
   private

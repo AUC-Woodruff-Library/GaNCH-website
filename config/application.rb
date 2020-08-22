@@ -19,5 +19,11 @@ module Ganch
 
     config.action_controller.default_protect_from_forgery = true
     config.wikidata_url = 'https://query.wikidata.org'
+
+    # use a env variable to open signup route
+    config.permit_signups = false
+
+    # who to contact for support
+    config.support_email = ENV['GANCH_EMAIL']
   end
 end
