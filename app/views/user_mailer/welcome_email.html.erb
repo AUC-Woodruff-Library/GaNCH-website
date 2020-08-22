@@ -4,6 +4,11 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
+    <%= render 'shared/mail_styles' %>
+    <div class="logos">
+      <%= image_tag "ganch_logo.png", class: 'logo ganch-logo' %>
+      <%= image_tag "aucrwwl_logo.jpg", class: 'logo aucrwwl-logo' %>
+    </div>
     <h1>Welcome to GaNCH, <%= @user.name %></h1>
     <p>
       You have successfully signed up to GaNCH,
