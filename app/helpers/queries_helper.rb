@@ -58,9 +58,11 @@ module QueriesHelper
     body.each do |row|
       targetKey = row.keys.detect { |f| f == ref }
       if targetKey
-        # turn exstinging data (url) into link and append to hash
-        link = link_to(row[labelField]['value'], row[targetKey]['value'], { target: '_new' })
+        # turn existing data (url) into link and append to hash
+        # data-value is set to use in sorting
+        link = link_to(row[labelField]['value'], row[targetKey]['value'], { 'data-value': row[labelField]['value'], target: '_new' })
         row[targetKey]["as_link"] = link
+        row[targetKey]["search_data"] = row[labelField]['value']
       end
     end
     [head, body]
