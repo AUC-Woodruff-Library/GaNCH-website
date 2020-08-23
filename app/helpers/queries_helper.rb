@@ -48,6 +48,9 @@ module QueriesHelper
     # delete that element from both arrays
     head.delete_at labelIndex
 
+    # swap county and email order in header
+    head = swap_two_fields(head)
+
     # get key of field the label refers to
     position = labelField =~ /Label/i
     ref = labelField.slice(0, position)
@@ -65,5 +68,20 @@ module QueriesHelper
 
   def url_encode_query(str)
     ERB::Util.url_encode(str)
+  end
+
+  # private
+
+  # this is to ensure county comes behind email in tables
+  def swap_two_fields(arr)
+    county_index = arr.index {|i| i == "county" }
+    e_mail_index = arr.index {|i| i == "e_mail_address" }
+    if !county_index || !e_mail_index
+      return arr
+    end
+    county = arr[county_index]
+    arr[county_index] = arr[e_mail_index]
+    arr[e_mail_index] = county
+    return arr
   end
 end
