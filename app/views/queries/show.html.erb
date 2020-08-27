@@ -1,5 +1,7 @@
 <%=  render "static_pages/logos" %>
 
+<% unless @query.nil? %>
+
 <div class="query-title-container">
   <h1><%= @query.title %></h1>
   <%= render "queries/display/wikidata_editor" %>
@@ -26,3 +28,4 @@
     <%= link_to 'Home', root_path %>
   <% end %>
 </footer>
+<% end %>
