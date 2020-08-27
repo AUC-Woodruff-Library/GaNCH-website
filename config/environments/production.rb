@@ -61,7 +61,10 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "ganch_production"
 
   config.action_mailer.perform_caching = false
-  config.action_mailer.default_url_options= { host: "ganch.galileo.usg.edu" }
+  config.action_mailer.default_options = {
+    from: "",
+    host: ""
+  }
 
   # Allow signups
   config.permit_signups = ENV['GANCH_PERMIT_SIGNUPS']

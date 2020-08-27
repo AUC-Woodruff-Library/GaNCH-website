@@ -19,6 +19,10 @@ module Ganch
 
     config.action_controller.default_protect_from_forgery = true
     config.wikidata_url = 'https://query.wikidata.org'
+    config.action_mailer.default_options = {
+      from: "ganch.project@gmail.com",
+      host: "ganch.galileo.usg.edu"
+    }
 
     # use a env variable to open signup route
     config.permit_signups = false

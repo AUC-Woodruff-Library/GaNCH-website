@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-  @@url  = Rails.configuration.action_mailer.default_url_options[:host] || 'http://localhost:3000/login'
+  @@url  = Rails.configuration.action_mailer.default_options[:host] || 'http://localhost:3000/login'
 
   def welcome_email
     @user = params[:user]
