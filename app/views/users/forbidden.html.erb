@@ -2,4 +2,8 @@
 <h1 style="margin-bottom: 20px;"><%= "\u26D4" %>Signups are not allowed at this time. <%= "\u26D4" %></h1>
 <p>Please contact <%= @email %> if you need support.</p>
 </div>
-<%= link_to 'Back', users_path, class: "btn btn-secondary" %>
+<% if @user.nil? %>
+  <%= link_to 'Back', login_path, class: "btn btn-secondary" %>
+<% else %>
+  <%= link_to 'Back', root_path, class: "btn btn-secondary" %>
+<% end %>

@@ -1,6 +1,17 @@
 class ApplicationController < ActionController::Base
-  
+  before_action :set_var
+
+  @@permits_new_users = Rails.application.config.permit_signups
+
   private
+
+  # allow controllers to decide whether to show sign up UI
+  def set_var
+    @permit_new_users = false
+    if /yes|true/i =~ @@permits_new_users
+      @permit_new_users = true
+    end
+  end
 
   def authenticate
     unless current_user

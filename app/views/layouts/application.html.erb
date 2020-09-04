@@ -16,7 +16,7 @@
   </head>
 
   <body>
-    <%= render "layouts/nav" %>
+    <%= render partial: "layouts/nav", locals: { permit_new_users: @permit_new_users } %>
     <main role="main" class="container">
       <!-- Begin Flash messages -->
       <div id="flash-messages" class="row">

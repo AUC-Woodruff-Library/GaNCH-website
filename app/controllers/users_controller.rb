@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   #skip_forgery_protection
   before_action :authenticate, except: [:new, :create]
 
-  @@permits_new_users = Rails.application.config.permit_signups
   @@help_email = Rails.application.config.support_email
 
   def index
@@ -10,10 +9,11 @@ class UsersController < ApplicationController
   end
 
   def new
-    if /yes|true/i =~ @@permits_new_users
+    if @permit_new_users
       @user = User.new
     else
       @email = @@help_email
+      @user = current_user
       render :forbidden
     end
   end

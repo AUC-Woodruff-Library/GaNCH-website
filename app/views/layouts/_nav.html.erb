@@ -19,7 +19,9 @@
             <%= nav_link current_user.name, current_user %>
             <%= nav_link "Logout", logout_path %>
           <% else %>
-            <%= nav_link "Sign Up", signup_path %>
+            <% if @permit_new_users %>
+              <%= nav_link "Sign Up", signup_path %>
+            <% end %>
             <%= nav_link "Login", login_path %>
           <% end %>
         </ul>
