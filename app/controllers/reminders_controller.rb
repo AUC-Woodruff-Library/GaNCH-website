@@ -17,8 +17,14 @@ class RemindersController < ApplicationController
 
     # send the emails
     if Rails.env.production?
-      @recipients.each do |recipient|
-        RecipientMailer.with(recipient: @recipient, user: @user).reminder_email.deliver_later
+      # restrict this action to admin
+      if @user == User.first
+        @recipients.each do |recipient|
+          RecipientMailer.with(recipient: @recipient, user: @user).reminder_email.deliver_later
+        end
+      else
+        @notice = 'Batch delivery of reminder emails blocked (unathorized user).'
+        @level = :error
       end
     else
       @notice = 'Batch delivery of reminder emails blocked (non-production environment).'
