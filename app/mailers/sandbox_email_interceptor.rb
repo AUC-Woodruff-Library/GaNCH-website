@@ -7,7 +7,8 @@ class SandboxEmailInterceptor
     # message.to << @sandbox_to
 
     # replace real recipient with sandboxed
-    message.to = [@sandbox_to]
+    # message.to = [@sandbox_to]
+
     Rails.logger.debug("Intercepting email: #{message.inspect}", )
     # message will send after here
   end

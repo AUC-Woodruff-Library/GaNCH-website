@@ -39,8 +39,8 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :sendmail
   config.action_mailer.default_options = {
-    from: ENV['GANCH_EMAIL'],
-    reply_to: 'noreply@galileo.usg.edu'
+    from: "ganch.project@gmail.com",
+    host: "ganch.galileo.usg.edu"
   }
 
   # Print deprecation notices to the Rails logger.
