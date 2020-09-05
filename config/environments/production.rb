@@ -120,5 +120,5 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
   # Allow signups
-  config.permit_signups = 'true'
+  config.permit_signups = 'false'
 end
