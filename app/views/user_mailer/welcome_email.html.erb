@@ -6,8 +6,8 @@
   <body>
     <%= render 'shared/mail_styles' %>
     <div class="logos">
-      <%= image_tag "ganch_logo.png", class: 'logo ganch-logo', alt: "Georgia’s Natural Cultural and Historic Organizations for Disaster Response logo" %>
-      <%= image_tag "aucrwwl_logo.jpg", class: 'logo aucrwwl-logo', alt: 'Atlanta University Center Robert W. Woodruff Library logo' %>
+      <img src="<%= image_path 'ganch_logo.png' %>" class="logo ganch-logo" alt="Georgia’s Natural Cultural and Historic Organizations for Disaster Response logo" />
+      <img src="<%= image_path 'aucrwwl_logo.jpg' %>" class="logo aucrwwl-logo" alt="Atlanta University Center Robert W. Woodruff Library logo" />
     </div>
     <h1>Welcome to GaNCH, <%= @user.name %></h1>
     <p>
