@@ -38,6 +38,19 @@ class UsersController < ApplicationController
   def forbidden
   end
 
+  def destroy
+    @current_user = current_user
+    if @current_user == User.first
+      @user.destroy
+    else
+      flash.now[:warn] = 'You are not authorized to delete users.'
+    end
+    respond_to do |format|
+      format.html { redirect_to users_url, notice: 'User was successfully removed.' }
+      format.json { head :no_content }
+    end
+  end
+
   private
 
   def user_params
