@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   #skip_forgery_protection
   before_action :authenticate, except: [:new, :create]
+  before_action :load_user, only: [:show, :edit, :update, :destroy]
 
   @@help_email = Rails.application.config.support_email
 
@@ -32,7 +33,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
+    # make current user available to view
+    @current_user = current_user
+    if @user == @current_user
+      flash.now[:warning] = 'Currently logged in as this user.'
+    end
   end
 
   def forbidden
@@ -40,19 +45,35 @@ class UsersController < ApplicationController
 
   def destroy
     @current_user = current_user
+    # only admin can destroy users
+    @notice = 'You are not authorized to delete users.'
+
     if @current_user == User.first
-      @user.destroy
-    else
-      flash.now[:warn] = 'You are not authorized to delete users.'
+      if @current_user != @user
+        @user.destroy
+        @notice = 'User was successfully removed.'
+        respond_to do |format|
+          format.html { redirect_to users_url, notice: @notice }
+          format.json { head :no_content }
+        end
+        return
+      else
+        @notice = 'Unable to delete your own user record.'
+      end
     end
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully removed.' }
+      format.html { redirect_to users_url, error: @notice }
       format.json { head :no_content }
     end
   end
 
   private
 
+  def load_user
+    @user = User.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
   def user_params
     params.require(:user).permit(:name,:email,:password,:password_confirmation)
   end

@@ -21,7 +21,10 @@
       <!-- Begin Flash messages -->
       <div id="flash-messages" class="row">
         <% flash.each do |name, msg| %>
-          <div class="alert alert-<%= name == 'notice' ? 'primary' : 'danger'%> alert-dismissable col" role="alert">
+          <% @flash_name = name %>
+          <% @flash_name = 'primary' if name == 'notice' %>
+          <% @flash_name = 'danger' if name == 'error' %>
+          <div class="alert alert-<%= @flash_name %> alert-dismissable col" role="alert">
             <%= msg %>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times;</span>

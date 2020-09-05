@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :set_var
+  add_flash_types :info, :error, :warning
 
   @@permits_new_users = Rails.application.config.permit_signups
 
