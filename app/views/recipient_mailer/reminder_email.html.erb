@@ -22,7 +22,7 @@
       <strong>Greetings!</strong>
       <p>Please review the following emergency contact information for your organization.  Keeping this information up-to-date will help cultural heritage emergency responders find your organization in the event of a disaster.  If any of this information is no longer correct, please reply to this email with the corrected information:</p>
       <ul>
-        <li>Organization Name: <%= @recipient.organization %></li>
+        <li>Organization Name: <b><%= @recipient.organization %></b></li>
         <li>Street Address: <%= @recipient.address %></li>
         <li>Coordinate Location: <%= link_to make_map_link(@recipient.location), make_map_link(@recipient.location), { target: '_blank' } %></li>
         <li>Phone Number: <%= @recipient.phone %></li>
@@ -33,14 +33,14 @@
       </p>
       <p>
         For more information about this annual email reminder and our efforts to preserve Georgia’s Natural, Cultural, and Historic Organizations, please visit: <%= link_to url_for(controller: 'static_pages',
-            action: 'about'), url_for(controller: 'static_pages',
-            action: 'about') %>
+            action: 'about').gsub(/\?.*$/, ''), url_for(controller: 'static_pages',
+            action: 'about').gsub(/\?.*$/, '') %>
       </p>
       <p>Thanks,
 
         The GaNCH Team
         <br />
-        <br /><a href="mailto:<%= headers.from.first %>"><%= headers.from.first %></a>
+        <br /><a href="mailto:<%= headers.reply_to.first %>"><%= headers.reply_to.first %></a>
       </p>
     </article>
   </body>

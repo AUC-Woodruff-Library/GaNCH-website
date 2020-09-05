@@ -1,6 +1,9 @@
 class RecipientMailer < ApplicationMailer
   include Rails.application.routes.url_helpers
 
+  default from: 'noreply@galileo.usg.edu'
+  default reply_to: 'ganch.project@gmail.com'
+
   add_template_helper(RecipientsHelper)
   add_template_helper(ApplicationHelper)
 

@@ -12,11 +12,11 @@ Please review the following emergency contact information for your organization.
 You can also review additional information about your organization on this webpage: <%= @recipient.wikidata_url %>
 
 
-For more information about this annual email reminder and our efforts to preserve Georgia’s Natural, Cultural, and Historic Organizations, please visit: <%= route_for :about %>
+For more information about this annual email reminder and our efforts to preserve Georgia’s Natural, Cultural, and Historic Organizations, please visit: <%= url_for(controller: 'static_pages', action: 'about').gsub(/\?.*$/, '') %>
 
 
 Thanks,
 
   The GaNCH Team
 
-  <%= headers.from.first %>
+  <%= headers.reply_to.first %>
