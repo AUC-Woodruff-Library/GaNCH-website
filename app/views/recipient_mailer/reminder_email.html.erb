@@ -14,19 +14,16 @@
       }
     </style>
     <%= render 'shared/mail_styles' %>
-    <div class="logos">
-      <%= image_tag "ganch_logo.png", class: 'logo ganch-logo', alt: "Georgia’s Natural Cultural and Historic Organizations for Disaster Response logo" %>
-      <%= image_tag "aucrwwl_logo.jpg", class: 'logo aucrwwl-logo', alt: 'Atlanta University Center Robert W. Woodruff Library logo' %>
-    </div>
-    <article>
+    <%= render 'shared/mail_logo_section' %>
+    <article style="max-width: 600px; margin-top: 20px;">
       <strong>Greetings!</strong>
       <p>Please review the following emergency contact information for your organization.  Keeping this information up-to-date will help cultural heritage emergency responders find your organization in the event of a disaster.  If any of this information is no longer correct, please reply to this email with the corrected information:</p>
       <ul>
-        <li>Organization Name: <b><%= @recipient.organization %></b></li>
-        <li>Street Address: <%= @recipient.address %></li>
-        <li>Coordinate Location: <%= link_to make_map_link(@recipient.location), make_map_link(@recipient.location), { target: '_blank' } %></li>
-        <li>Phone Number: <%= @recipient.phone %></li>
-        <li>Email address: <%= @recipient.email %></li>
+        <li style="line-height: 133%;">Organization Name: <b><%= @recipient.organization %></b></li>
+        <li style="line-height: 133%;">Street Address: <%= @recipient.address %></li>
+        <li style="line-height: 133%;">Coordinate Location: <%= link_to make_map_link(@recipient.location), make_map_link(@recipient.location), { target: '_blank' } %></li>
+        <li style="line-height: 133%;">Phone Number: <%= @recipient.phone %></li>
+        <li style="line-height: 133%;">Email address: <%= @recipient.email %></li>
       </ul>
       <p>
         You can also review additional information about your organization on this webpage: <%= external_link "#{@recipient.wikidata_url}", @recipient.wikidata_url, { target: '_new' } %><br>

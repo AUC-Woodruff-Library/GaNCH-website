@@ -5,10 +5,7 @@
   </head>
   <body>
     <%= render 'shared/mail_styles' %>
-    <div class="logos">
-      <img src="https:<%= image_path 'ganch_logo.png' %>" class="logo ganch-logo" alt="Georgia’s Natural Cultural and Historic Organizations for Disaster Response logo" title="GaNCH logo" height="64" width="177" style="display:block" />
-      <img src="https:<%= image_path 'aucrwwl_logo.jpg' %>" class="logo aucrwwl-logo" alt="Atlanta University Center Robert W. Woodruff Library logo" title="AUC logo" height="64" width="297" style="display:block" />
-    </div>
+    <%= render 'shared/mail_logo_section' %>
     <h1>Welcome to GaNCH, <%= @user.name %></h1>
     <p>
       You have successfully signed up to GaNCH,
