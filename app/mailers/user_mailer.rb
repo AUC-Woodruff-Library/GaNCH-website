@@ -2,8 +2,6 @@ class UserMailer < ApplicationMailer
   default from: 'noreply@galileo.usg.edu'
   default reply_to: 'ganch.project@gmail.com'
 
-  @@url  = Rails.configuration.action_mailer.default_options[:host] || 'http://localhost:3000/login'
-
   def welcome_email
     @user = params[:user]
     @url = @@url
