@@ -7,6 +7,8 @@ class QueriesController < ApplicationController
 
   @@url = Rails.configuration.wikidata_url
 
+  @@table_headers = ["organization", "street_address", "coordinate_location", "phone_number", "e_mail_address","website", "Facebook_ID", "Twitter_username", "county"]
+
   # GET /queries
   # GET /queries.json
   def index
@@ -28,12 +30,14 @@ class QueriesController < ApplicationController
   # GET /queries/1
   # GET /queries/1.json
   def show
+    @table_headers = @@table_headers
     @url = @@url
   end
 
   def show_by_title
     @title = from_kebab_case(params[:title]).titleize
     @query = Query.where("lower(title) = ?", @title.downcase).first
+    @table_headers = @@table_headers
     @url = @@url
     render :show
   end

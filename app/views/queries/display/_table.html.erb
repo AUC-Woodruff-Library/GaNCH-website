@@ -4,14 +4,14 @@
 <div class="<%= cssClasses %>">
   <table id="<%= id %>" data-toggle="table" data-sortable="true" data-search="true" data-card-view="<%= mobile_view.to_s %>" class="ganch-table table-striped">
     <thead class="thead">
-      <% headers.each do |column| %>
-        <th data-field="<%= column %>" data-sortable="true"><%= column %><i class="fas fa-flag"></i></th>
+      <% @table_headers.each do |column| %>
+        <th data-field="<%= column %>" data-sortable="true"><%= column.humanize %><i class="fas fa-flag"></i></th>
       <% end %>
     </thead>
     <tbody>
       <% body.each do |row| %>
         <tr>
-          <% headers.each do |col| %>
+          <% @table_headers.each do |col| %>
             <td>
               <% if !row[col].nil? %>
                 <% if row[col]['as_link'] %>

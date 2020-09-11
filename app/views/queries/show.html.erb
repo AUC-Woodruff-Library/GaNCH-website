@@ -14,8 +14,8 @@
   <%-# render tables for desktop & mobile -%>
   <% headers, body = merge_first_and_label(@query.headers, @query.body) %>
   <% is_mobile = true %>
-  <%= render partial: "queries/display/table", locals: { headers: headers, body: body, mobile_view: is_mobile, id: 'mobile' } %>
-  <%= render partial: "queries/display/table", locals: { headers: headers, body: body, mobile_view: !is_mobile, id: 'desktop' }  %>
+  <%= render partial: "queries/display/table", locals: { headers:     @table_headers, body: body, mobile_view: is_mobile, id: 'mobile' } %>
+  <%= render partial: "queries/display/table", locals: { headers: @table_headers, body: body, mobile_view: !is_mobile, id: 'desktop' }  %>
 <% else %>
   <%=  render "queries/display/not_found" %>
 <% end %>
