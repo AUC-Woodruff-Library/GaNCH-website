@@ -8,4 +8,8 @@ class StaticPagesController < ApplicationController
   def about
     render "about"
   end
+
+  def submit
+    render "submit"
+  end
 end
