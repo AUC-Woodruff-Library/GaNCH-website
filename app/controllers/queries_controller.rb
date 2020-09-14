@@ -20,6 +20,7 @@ class QueriesController < ApplicationController
   def state
     @query = Query.where(scope: 'state').first
     @url = @@url
+    @table_headers = @@table_headers
 
     respond_to do |format|
       format.html { render :show }
@@ -30,7 +31,6 @@ class QueriesController < ApplicationController
   # GET /queries/1
   # GET /queries/1.json
   def show
-    @table_headers = @@table_headers
     @url = @@url
   end
 
