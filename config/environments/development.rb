@@ -73,6 +73,7 @@ Rails.application.configure do
     from: "",
     host: ""
   }
+  config.action_mailer.asset_host = ""
   
   # Allow signups
   config.permit_signups = 'true'
